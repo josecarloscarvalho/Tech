@@ -41,7 +41,6 @@ class RackSpec extends Specification {
 			rackMock.add(smallertBall)
 		
 		then:
-			rackMock.getElements().size()==2;
 			rackMock.getElements() == [1,5]
 		
 	}
@@ -59,7 +58,6 @@ class RackSpec extends Specification {
 			
 		
 		then:
-			rackMock.getElements().size()==3;
 			rackMock.getElements() == [1,5,50]
 	}
 	
