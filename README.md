@@ -1,9 +1,9 @@
 
 ## Lottery Sorting
 The problem was modeled as follows:
-1. We assume that each ball is inserted only once.
-2. A class (DrawningBoard) that represents the frame of balls drawn up to date, acting as data structure (since it was recommended not to use java.util structures).
-3. LotteryRackImpl is the implementation of the LotteryRack interface. It also implements a validation method on the received input. Whenever a ball is added, if the number is not valid, an appropriate exception will be thrown (common.exceptions) 
+* We assume that each ball is inserted only once.
+* A class (DrawningBoard) that represents the frame of balls drawn up to date, acting as data structure (since it was recommended not to use java.util structures).
+* LotteryRackImpl is the implementation of the LotteryRack interface. It also implements a validation method on the received input. Whenever a ball is added, if the number is not valid, an appropriate exception will be thrown (common.exceptions) 
 
 ## Spelling Out
 The problem was modeled as follows:
