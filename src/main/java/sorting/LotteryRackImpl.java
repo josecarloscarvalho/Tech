@@ -4,17 +4,17 @@ import common.exceptions.InvalidNumberException;
 
 public class LotteryRackImpl implements LotteryRack {
 	
-	private final String INVALID_INPUT_MSG = "Invalid number input";
+	private final static String INVALID_INPUT_MSG = "Invalid number input";
 	
 	private DrawningBoard board;
 	
-	private static int minBallNumber;
-	private static int maxBallNumber;
+	private final int minBallNumber;
+	private final int maxBallNumber;
 	
 	public LotteryRackImpl(int minNumber, int maxNumber) {
 		this.board = new DrawningBoard();
-		LotteryRackImpl.minBallNumber = minNumber;
-		LotteryRackImpl.maxBallNumber = maxNumber;
+		this.minBallNumber = minNumber;
+		this.maxBallNumber = maxNumber;
 	}
 	
 	@Override
@@ -47,7 +47,7 @@ public class LotteryRackImpl implements LotteryRack {
 		} catch (NumberFormatException nfe) {
 			return false;
 		}
-		if (intValue < LotteryRackImpl.minBallNumber || intValue > LotteryRackImpl.maxBallNumber)
+		if (intValue < this.minBallNumber || intValue > this.maxBallNumber)
 			return false;
 
 		return true;

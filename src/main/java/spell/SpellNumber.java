@@ -5,16 +5,16 @@ import sorting.LotteryRackImpl;
 
 public class SpellNumber {
 
-	private final String INVALID_INPUT_MSG = "Invalid number input";
+	private final static String INVALID_INPUT_MSG = "Invalid number input";
 
 	private Translator translationProvider;
 
-	private static int minNumberLimit;
-	private static int maxNumberLimit;
+	private final int minNumberLimit;
+	private final int maxNumberLimit;
 
 	public SpellNumber(int min, int max) {
-		SpellNumber.minNumberLimit = min;
-		SpellNumber.maxNumberLimit = max;
+		this.minNumberLimit = min;
+		this.maxNumberLimit = max;
 		this.translationProvider = new Translator();
 	}
 
@@ -36,7 +36,7 @@ public class SpellNumber {
 		} catch (NumberFormatException nfe) {
 			return false;
 		}
-		if (intValue < SpellNumber.minNumberLimit || intValue > SpellNumber.maxNumberLimit)
+		if (intValue < this.minNumberLimit || intValue > this.maxNumberLimit)
 			return false;
 		return true;
 	}
