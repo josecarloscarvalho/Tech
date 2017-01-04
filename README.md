@@ -3,7 +3,8 @@
 The problem was modeled as follows:
 * We assume that each ball is inserted only once.
 * A class (DrawningBoard) that represents the frame of balls drawn up to date, acting as data structure (since it was recommended not to use java.util structures).
-* LotteryRackImpl is the implementation of the LotteryRack interface. It also implements a validation method on the received input. Whenever a ball is added, if the number is not valid, an appropriate exception will be thrown (common.exceptions) 
+* LotteryRackImpl is the implementation of the LotteryRack interface. It also implements a validation method on the received input. 
+* Whenever a ball is added, if the number is not valid, an appropriate exception will be thrown (common.exceptions). If the ball number is valid, the number will be inserted in correct position. 
 
 ## Spelling Out
 The problem was modeled as follows:
