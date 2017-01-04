@@ -1,8 +1,9 @@
 package sorting;
 
+import common.exceptions.InvalidNumberException
 import spock.lang.Specification;
 
-class RackSpecTest extends Specification {
+class RackSpec extends Specification {
 		
 	def  LotteryRack rackMock
 	
@@ -69,7 +70,7 @@ class RackSpecTest extends Specification {
 				rackMock.add(negativeNumBall)
 			
 			then:
-				def exception = thrown(InvalidBallNumberException)
+				def exception = thrown(InvalidNumberException)
 		
 	}
 	
@@ -79,8 +80,42 @@ class RackSpecTest extends Specification {
 			when:
 				rackMock.add(overMaxLimitBall)
 			then:
-				def exception = thrown(InvalidBallNumberException)
+				def exception = thrown(InvalidNumberException)
 		
+	}
+	
+	def "Invalid ball number: not numeric"(){
+		given: "Character sequence"
+			def characterInsteadNumberBall = "abc"
+			when:
+				rackMock.add(characterInsteadNumberBall)
+			then:
+				def exception = thrown(InvalidNumberException)
+		
+	}
+	
+	def "Invalid ball number: empty"(){
+		given: "Empty string"
+			def emptyNumberBall = ""
+			when:
+				rackMock.add(emptyNumberBall)
+			then:
+				def exception = thrown(InvalidNumberException)
+		
+	}
+	
+	def "Print current drawed balls"(){
+		given: "List of drawed balls"
+			def ball1 = "50"
+			def ball2 = "0"
+			def balln = "4"
+			def expected = "Numbers: 0 4 50"
+			when:
+				rackMock.add(ball1)
+				rackMock.add(ball2)
+				rackMock.add(balln)
+			then:
+				rackMock.printPresentElements()==expected
 	}
 
 }
