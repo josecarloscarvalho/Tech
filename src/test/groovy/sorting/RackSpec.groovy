@@ -5,17 +5,17 @@ import spock.lang.Specification;
 
 class RackSpec extends Specification {
 		
-	def  LotteryRack rackMock
+	def  LotteryRack testObject
 	
 	def setup(){
-		rackMock = new LotteryRackImpl(0, 59);
+		testObject = new LotteryRackImpl(0, 59);
 		
 	}
 	
 	def "Initial drawing board must be empty"() {
 		given: "There is no balls in the board"
 		expect:
-			rackMock.getElements().size()==0;
+			testObject.getElements()==[];
 	}
 	
 	def "Add a new ball"() {
@@ -23,11 +23,10 @@ class RackSpec extends Specification {
 			def firstBall = "10"
 
 		when: 
-			rackMock.add(firstBall)
+			testObject.add(firstBall)
 		
 		then:
-			rackMock.getElements().size()==1;
-			rackMock.getElements() == [10]
+			testObject.getElements() == [10]
 		
 	}
 	
@@ -37,11 +36,11 @@ class RackSpec extends Specification {
 			def smallertBall = "1"
 
 		when:
-			rackMock.add(currentBall)
-			rackMock.add(smallertBall)
+			testObject.add(currentBall)
+			testObject.add(smallertBall)
 		
 		then:
-			rackMock.getElements() == [1,5]
+			testObject.getElements() == [1,5]
 		
 	}
 	
@@ -52,23 +51,23 @@ class RackSpec extends Specification {
 			def largerBall = "50"
 
 		when:
-			rackMock.add(currentBall)
-			rackMock.add(smallertBall)
-			rackMock.add(largerBall)
+			testObject.add(currentBall)
+			testObject.add(smallertBall)
+			testObject.add(largerBall)
 			
 		
 		then:
-			rackMock.getElements() == [1,5,50]
+			testObject.getElements() == [1,5,50]
 	}
 	
 	def "Invalid ball number: smaller then minimum limit"(){
 		given: "Ball with negative number"
 			def negativeNumBall = "-1"
 			when:
-				rackMock.add(negativeNumBall)
+				testObject.add(negativeNumBall)
 			
 			then:
-				def exception = thrown(InvalidNumberException)
+				thrown(InvalidNumberException)
 		
 	}
 	
@@ -76,9 +75,9 @@ class RackSpec extends Specification {
 		given: "Ball with negative number or bigger than limit"
 			def overMaxLimitBall = "100"
 			when:
-				rackMock.add(overMaxLimitBall)
+				testObject.add(overMaxLimitBall)
 			then:
-				def exception = thrown(InvalidNumberException)
+				thrown(InvalidNumberException)
 		
 	}
 	
@@ -86,9 +85,9 @@ class RackSpec extends Specification {
 		given: "Character sequence"
 			def characterInsteadNumberBall = "abc"
 			when:
-				rackMock.add(characterInsteadNumberBall)
+				testObject.add(characterInsteadNumberBall)
 			then:
-				def exception = thrown(InvalidNumberException)
+				thrown(InvalidNumberException)
 		
 	}
 	
@@ -96,9 +95,9 @@ class RackSpec extends Specification {
 		given: "Empty string"
 			def emptyNumberBall = ""
 			when:
-				rackMock.add(emptyNumberBall)
+				testObject.add(emptyNumberBall)
 			then:
-				def exception = thrown(InvalidNumberException)
+				thrown(InvalidNumberException)
 		
 	}
 	
@@ -107,13 +106,15 @@ class RackSpec extends Specification {
 			def ball1 = "50"
 			def ball2 = "0"
 			def balln = "4"
-			def expected = "Numbers: 0 4 50"
+			def expectedPrint = "Numbers: 0 4 50"
+			def expectedList = [0,4,50]
 			when:
-				rackMock.add(ball1)
-				rackMock.add(ball2)
-				rackMock.add(balln)
+				testObject.add(ball1)
+				testObject.add(ball2)
+				testObject.add(balln)
 			then:
-				rackMock.printPresentElements()==expected
+				testObject.printPresentElements()==expectedPrint
+				testObject.getElements()==expectedList
 	}
 
 }

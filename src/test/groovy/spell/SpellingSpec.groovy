@@ -5,10 +5,10 @@ import spock.lang.Specification;
 
 class SpellingSpec extends Specification {
 		
-	def  SpellNumber spellMock
+	def  SpellNumber testObject
 	
 	def setup(){
-		spellMock = new SpellNumber(0, 100000000);
+		testObject = new SpellNumber(0, 100000000);
 		
 	}
 	
@@ -18,7 +18,7 @@ class SpellingSpec extends Specification {
 			def expected = "zero"
 
 		when: 
-			def returnedValue = spellMock.getWordRepresentation(zeroValue)
+			def returnedValue = testObject.getWordRepresentation(zeroValue)
 		
 		then:
 			returnedValue==expected
@@ -31,7 +31,7 @@ class SpellingSpec extends Specification {
 			def expected = "fifteen"
 
 		when:
-			def returnedValue = spellMock.getWordRepresentation(value)
+			def returnedValue = testObject.getWordRepresentation(value)
 		
 		then:
 			returnedValue==expected
@@ -44,7 +44,7 @@ class SpellingSpec extends Specification {
 			def expected = "one hundred twenty-five"
 
 		when:
-			def returnedValue = spellMock.getWordRepresentation(value)
+			def returnedValue = testObject.getWordRepresentation(value)
 		
 		then:
 			returnedValue==expected
@@ -57,7 +57,7 @@ class SpellingSpec extends Specification {
 			def expected = "seven hundred sixty-eight thousand nine hundred"
 
 		when:
-			def returnedValue = spellMock.getWordRepresentation(value)
+			def returnedValue = testObject.getWordRepresentation(value)
 		
 		then:
 			returnedValue==expected
@@ -70,7 +70,7 @@ class SpellingSpec extends Specification {
 			def expected = "one million forty-nine thousand eight hundred seventy-five"
 
 		when:
-			def returnedValue = spellMock.getWordRepresentation(value)
+			def returnedValue = testObject.getWordRepresentation(value)
 		
 		then:
 			returnedValue==expected
@@ -82,10 +82,10 @@ class SpellingSpec extends Specification {
 		given: "negative number"
 			def value = "-1"
 			when:
-				spellMock.getWordRepresentation(value)
+				testObject.getWordRepresentation(value)
 			
 			then:
-				def exception = thrown(InvalidNumberException)
+				thrown(InvalidNumberException)
 		
 	}
 	
@@ -93,9 +93,9 @@ class SpellingSpec extends Specification {
 		given: "number over 1 billion"
 			def value = "1000000001"
 			when:
-				spellMock.getWordRepresentation(value)
+				testObject.getWordRepresentation(value)
 			then:
-				def exception = thrown(InvalidNumberException)
+				thrown(InvalidNumberException)
 		
 	}
 	
@@ -104,9 +104,9 @@ class SpellingSpec extends Specification {
 		given: "Character sequence"
 			def value = "xcvb"
 			when:
-				spellMock.getWordRepresentation(value)
+				testObject.getWordRepresentation(value)
 			then:
-				def exception = thrown(InvalidNumberException)
+				thrown(InvalidNumberException)
 		
 	}
 	
