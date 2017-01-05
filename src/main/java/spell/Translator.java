@@ -1,5 +1,14 @@
 package spell;
 
+/**
+* <h1>Number spell translator</h1>
+* This class implements translator engine that
+* translates the numeric representation of a given number
+* in his word representation
+* <p>
+*
+* @author  Jose Carvalho
+*/
 public class Translator {
 	
 	private static final String separatorMinusToken = "-";
@@ -49,7 +58,13 @@ public class Translator {
 	public Translator() {
 		super();
 	}
-		
+	
+	/**
+	* This is the main method which spell the number using 
+	* their decimal length representation.
+	* @param new int number.
+	* @return String word representation of number.
+	*/
 	public String translate(int num) {
 		String majorUnit = checkMajorUnit(num);
 		
@@ -71,6 +86,12 @@ public class Translator {
 		return translate(num / 1000000000) + Translator.billionDesc + checkRemain(num, 1000000000).trim();
 	}
 	
+	/**
+	* Method to check the remaining decimal units
+	* @param int number.
+	* @param int decimal units.
+	* @return String word representation of remaining units.
+	*/
 	private String checkRemain(int num, int units){
 		String remain = "";
 		if(num % units > 0)

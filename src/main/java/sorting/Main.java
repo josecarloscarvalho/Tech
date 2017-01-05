@@ -6,8 +6,25 @@ import java.io.InputStreamReader;
 
 import common.exceptions.InvalidNumberException;
 
+/**
+* This Main program implements an application that receive 
+* an input numbers on console and inserts him on
+* a ordered list of current numbers. For each inserted number
+* the list will be printed.
+* <p>
+*
+* @author Jose Carvalho
+*/
 public class Main{
-		
+	
+   /**
+   * This is the main method which use a BufferedReader to
+   * receive an input number from the console and call the 
+   * add method of LotteryRack. Print the current list 
+   * at the end of input.
+   * @param args Unused.
+   * @return Nothing.
+   */
 	public static void main( String[] args) {
 
 		BufferedReader buffer = null;

@@ -4,9 +4,22 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import common.exceptions.InvalidNumberException;
-
+/**
+* This Main program implements an application that receive 
+* an input number on console and spell it.
+* <p>
+*
+* @author Jose Carvalho
+*/
 public class Main{
-		
+	
+   /**
+   * This is the main method which use a BufferedReader to
+   * receive an input number from the console and call the 
+   * getWordRepresentation method of SpellNumber.
+   * @param args Unused.
+   * @return Nothing.
+   */
 	public static void main( String[] args) {
 
 		BufferedReader buffer = null;
